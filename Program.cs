@@ -136,17 +136,20 @@ namespace CreateTableByLeetCode
 
         static IDbConnection GetConn()
         {
+            //连接字符串
             string connStr = "Data Source=LINYIXIN;Initial Catalog=LeetCodeDataBase;Integrated Security=True";
             return new SqlConnection(connStr);
         }
 
         static DataTable LoadJsonFile()
         {
-            string path = "D:/code/CreateTableByLeetCode/data.json";
+            //文件路径，默认项目文件下
+            string path = "../../../data.json";
             using (System.IO.StreamReader file = System.IO.File.OpenText(path))
             {
                 using (JsonTextReader reader = new JsonTextReader(file))
                 {
+
                     var o = JToken.ReadFrom(reader);
                     var headers = o["headers"];
 
